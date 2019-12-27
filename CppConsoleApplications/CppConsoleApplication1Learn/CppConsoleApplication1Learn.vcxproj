@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CppConsoleApplication1Learn.c" />
+    <ClCompile Include="MulArrays.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppConsoleApplication1Learn.h" />
