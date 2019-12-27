@@ -1,6 +1,8 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
+#include <time.h>
 
 #define ARR_SIZE 10
 
@@ -51,15 +53,38 @@ void Task1(void)
 	printSquared(x1, x2, result);
 }
 
+int MyFuncArrWork(int *arr, int length)
+{
+	int boolOddContain = 0;
+	for (int i = 0; i < length; i++)
+	{
+		if (*(arr + i) % 2 != 0)
+		{
+			boolOddContain = 1;
+			*(arr + i) *= 2;
+		}
+	}
+}
 
-
+#define SIZE_ARR2 10
 void Task2(void)
 {
 	printf_s("Task2\n");
-	int arr[10] = {5, 2, 2, 2, 3, 5, 3, 2, 9, 4};
-	
-
-	
+	srand(time(NULL));
+	int arr[10];
+	for (int i = 0; i < SIZE_ARR2; i++)
+		*(arr + i) = rand() / 100;
+	printf_s("Исходный массив: ");
+	for (int i = 0; i < SIZE_ARR2; i++)
+		printf_s("%d ", *(arr + i));
+	printf_s("\n");
+	if (MyFuncArrWork(arr, SIZE_ARR2))
+	{
+		printf_s("Преборазованный массив: ");
+		for (int i = 0; i < SIZE_ARR2; i++)
+			printf_s("%d ", *(arr + i));
+	}
+	printf_s("\n");
 }
 
 
