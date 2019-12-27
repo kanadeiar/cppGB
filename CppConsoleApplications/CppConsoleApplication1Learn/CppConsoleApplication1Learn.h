@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+//вывод привествия
 inline void HelloName()
 {
 	puts("Привет, Мир!");
