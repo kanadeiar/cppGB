@@ -10,7 +10,7 @@
 int main(int argc, const char* argv[])
 {
 	setlocale(LC_ALL, "russian");
-	printf_s("Программа на С\n***********************\n");
+	printf_s("Привет, Мир!\n");
 
 	
 
