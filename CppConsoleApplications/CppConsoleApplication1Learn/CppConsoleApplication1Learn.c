@@ -1,18 +1,12 @@
 ﻿#include "CppConsoleApplication1Learn.h"
 
-#include <locale.h>
-#include <stdio.h>
-#include <time.h>
-
-
-
+#include <windows.h>
 
 int main(int argc, const char* argv[])
 {
-	setlocale(LC_ALL, "russian");
-	printf_s("Привет, Мир!\n");
-
-	
+	SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+	HelloName();
 
 	
 	return 0;
