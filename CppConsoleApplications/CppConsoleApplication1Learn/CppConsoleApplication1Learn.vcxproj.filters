@@ -18,9 +18,6 @@
     <ClCompile Include="CppConsoleApplication1Learn.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="MulArrays.c">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppConsoleApplication1Learn.h">
