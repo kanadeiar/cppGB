@@ -1,6 +1,6 @@
 ﻿#include "CppConsoleApplication1Learn.h"
 #include <windows.h>
-
+#include <cstdio.h>
 
 
 int main(int argc, const char* argv[])
