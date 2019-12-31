@@ -58,9 +58,7 @@ int main(int argc, const char* argv[])
 	//strcat_s(fullStr, city);
 	//puts(fullStr);
 
-	srand(time(NULL));
-	int dice1 = (rand() % 5) + 1;
-	printf_s("Значение игральной кости: %d", dice1);
+
 	
 
 	
