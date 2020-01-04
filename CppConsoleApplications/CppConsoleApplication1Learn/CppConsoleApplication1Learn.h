@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <iostream>
-#include <ctime>
+#include <time.h>
 
 //вывод привествия
 using namespace std;
@@ -25,6 +25,70 @@ inline void HelloName()
 
 
 
+
+
+
+inline void Task22()
+{
+	int arr_size = 20;
+	int * arr = static_cast<int*>(malloc(arr_size * sizeof(int)));
+	srand(time(NULL));
+	for (int i=0; i<arr_size; i++)
+		*(arr + i) = rand() % 100 + 50;
+	int * pMin = nullptr;
+	for (int i=0; i<arr_size; i++)
+		if (*(arr + i) % 2 == 0)
+			if (pMin == nullptr || *(arr + i) < *pMin)
+				pMin = arr + i;
+	printf_s("Минимальные элемент: %d, его номер: %d\n", *pMin, pMin - arr);
+	puts("Весь массив:");
+	for (int i=0; i<arr_size; i++)
+		printf_s("%d ", *(arr + i));
+	free(arr);
+	cin.get();
+}
+inline void Task20()
+{
+	int arr[10];
+	cout << "Введите значения массива:" << endl;
+	for (int i = 0; i < _countof(arr); i++)
+	{
+		cout << "arr[" << i << "]=";
+		cin >> arr[i];
+		getchar();
+	}
+	int summ = 0;
+	for (int i = 0; i < _countof(arr); i++)
+		summ += arr[i];
+	cout << "Среднее значение: " << float(summ) / _countof(arr);
+	cin.get();
+}
+inline void Task18()
+{
+	cout << "Числа армстронга:" << endl;
+	for (int i = 1; i < INT_MAX; i++)
+	{
+		int count = 0;
+		int num = i;
+		while (num != 0)
+		{
+			count++;
+			num /= 10;
+		}
+		num = i;
+		int sum = 0;
+		while (num != 0)
+		{
+			sum += powf(round(num % 10), count);
+			num /= 10;
+		}
+		if (sum == i)
+			cout << i << endl;
+	}
+	cout << "Конец";
+	
+	cin.get();
+}
 inline void Task13()
 {
 	cout << "Введите число: ";
@@ -36,8 +100,6 @@ inline void Task13()
 	bool isPolyndrom = (n0 == n1) && (n1 == n2);
 	cout << "Ответ: " << ((isPolyndrom) ? "да" : "нет") << endl;
 }
-
-
 inline void Task11()
 {
 	while (true)
