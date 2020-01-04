@@ -4,6 +4,7 @@
 #include <string.h>
 #include <iostream>
 #include <time.h>
+#include <string>
 
 //вывод привествия
 using namespace std;
@@ -28,6 +29,37 @@ inline void HelloName()
 
 
 
+
+
+
+inline void Task12_9()
+{
+	puts("9 класс");
+	string s = "12+134+45+17";
+	int one;
+	int two;
+	int three;
+	int four;
+	int n1 = s.find('+');
+	if (n1 == s.npos)
+		exit(1);
+	s.replace(n1, 1, "_");
+	int n2 = s.find('+');
+	if (n2 == s.npos)
+		exit(1);
+	s.replace(n2, 1, "_");
+	int n3 = s.find('+');
+	if (n3 == s.npos)
+		exit(1);
+	s.replace(n3, 1, "_");
+	one = stoi(s.substr(0, n1));
+	two = stoi(s.substr(n1+1, n2- n1 - 1));
+	three = stoi(s.substr(n2+1, n3 - n2 - 1));
+	four = stoi(s.substr(n3+1, s.size() - n3 - 1));
+	int sum = one + two + three + four;
+	cout << "Сумма: " << sum << endl;	
+	cin.get();
+}
 inline void Task22()
 {
 	int arr_size = 20;
