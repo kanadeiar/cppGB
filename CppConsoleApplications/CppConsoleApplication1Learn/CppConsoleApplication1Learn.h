@@ -5,6 +5,7 @@
 #include <iostream>
 #include <time.h>
 #include <string>
+#include <iomanip>
 
 //вывод привествия
 using namespace std;
@@ -23,13 +24,191 @@ inline void HelloName()
 
 
 
+bool isOneByte(int num)
+{
+	return num <= 255;
+}
+
+inline void Task22_9()
+{
+	cout << "Введите число: ";
+	int num;
+	cin >> num;
+
+	if (isOneByte(num))
+		cout << "Помещается!";
+	else
+		cout << "Не помещается!";
+
+	cin.get();
+}
 
 
 
 
 
+string toDSys(int num)
+{
+	string itemp = to_string((num % 2));
+	num /= 2;
+	if (num == 0)
+		return itemp;
+	return toDSys(num) + itemp;
+}
 
+string getNum16(int num)
+{
+	int itemp = num % 16;
+	char ctemp;
+	if (itemp == 0)
+		ctemp = '0';
+	else if (itemp == 1)
+		ctemp = '1';
+	else if (itemp == 2)
+		ctemp = '2';
+	else if (itemp == 3)
+		ctemp = '3';
+	else if (itemp == 4)
+		ctemp = '4';
+	else if (itemp == 5)
+		ctemp = '5';
+	else if (itemp == 6)
+		ctemp = '6';
+	else if (itemp == 7)
+		ctemp = '7';
+	else if (itemp == 8)
+		ctemp = '8';
+	else if (itemp == 9)
+		ctemp = '9';
+	else if (itemp == 10)
+		ctemp = 'A';
+	else if (itemp == 11)
+		ctemp = 'B';
+	else if (itemp == 12)
+		ctemp = 'C';
+	else if (itemp == 13)
+		ctemp = 'D';
+	else if (itemp == 14)
+		ctemp = 'E';
+	else if (itemp == 15)
+		ctemp = 'F';
+	num = num / 16;	
+	if (num == 0)
+	{
+		return string(1, ctemp);
+	}	
+	return getNum16(num) + ctemp;
+}
+inline void Task20_9()
+{
+	string num16 = getNum16(123);
+	cout << "Число: " << num16 << endl;
+	cin.get();
+}
+inline void Task18_9()
+{
+	const int N = 4, M = 4;
+	int mtx[N][M];
+	int * mtx_end = mtx[N];
+	srand(time(NULL));
+	//////////////////////////////
+	for (int *pI = &mtx[0][0]; pI < mtx_end; pI++)
+		*pI = rand() % 99;
+	puts("Матрица:");
+	for (int *pI = &mtx[0][0]; pI < mtx_end; pI++)
+	{
+		cout << *pI << ' ';
+		if ( (pI - &mtx[0][0] + 1) % N == 0 )
+			cout << endl;
+	}
+	puts("\nМаксимальный элемент всей матрицы:");
+	int * pMax = &mtx[0][0];
+	for (int *pI = &mtx[0][0]; pI < mtx_end; pI++)
+		if (*pI > *pMax)
+			pMax = pI;
+	int iMax = (pMax - &mtx[0][0]) / N;
+	int jMax = (pMax - &mtx[0][0]) % N;
+	cout << "mtx[" << iMax << "," << jMax << "]=" << *pMax;
 
+	cin.get();
+}
+inline void Task15_9()
+{
+	int arr[10];
+	int * arr_end = arr + 10;
+	srand(time(NULL));
+	for (int * pI = arr; pI < arr_end; pI++)
+		*pI = rand() % 20;
+	cout << "Массив:" << endl;
+	for (int * pI = arr; pI < arr_end; pI++)
+		cout << *pI << ' ';
+	cout << endl;
+	//////////////////////////////////////
+	for (int * pI = arr_end - 1; pI >= arr; pI--)
+	{
+		int * pMax = pI;
+		for (int * pJ = arr; pJ < pI - 1; pJ++)
+		{
+			if (*pJ > *pMax)
+				pMax = pJ;
+		}
+		if (pMax != pI)
+		{
+			int temp = *pI;
+			*pI = *pMax;
+			*pMax = temp;
+		}
+	}
+	//////////////////////////////////////
+	cout << "Отсортированный массив:" << endl;
+	for (int * pI = arr; pI < arr_end; pI++)
+		cout << *pI << ' ';
+	cout << endl;
+	cin.get();
+}
+inline void Array()
+{
+	srand(time(NULL));
+	/////////////////////////////
+	int * arr = new int [30];
+	int * arr_last = &arr[29];
+	for (int * pI = arr; pI <= arr_last; pI++)
+		*pI = rand() % 99;
+	/////////////////////////////
+	for (int * pI = arr; pI <= arr_last - 1; pI++)
+	{
+		int * pMin = pI;
+		for (int * pJ = pI + 1; pJ <= arr_last; pJ++)
+		{
+			if (*pJ < *pMin)
+				pMin = pJ;
+		}
+		if (pMin != pI)
+		{
+			int temp = *pI;
+			*pI = *pMin;
+			*pMin = temp;
+		}
+	}
+	/////////////////////////////
+	cout << "Массив:" << endl;
+	for (int * pI = arr; pI <= arr_last; pI++)
+		cout << *pI << ' ';
+	delete [] arr;
+//	ostringstream sbuf; //вспомогательный выходной буферный поток символов
+//	int num = 123;
+//	sbuf << num;
+//	string sNum = sbuf.str(); // 123
+//	sbuf.str(""); //очистка
+//	float numF = 123.123456;
+//	sbuf << fixed << setprecision(2) << setw(8) << numF;
+//	string sFlt = sbuf.str(); //123.123
+//	sbuf.str(""); //очистка
+//	double numD = 0.0000232342;
+//	sbuf << scientific << setprecision(6) << setw(16) << numD;
+//	string sScientific = sbuf.str(); //2.323420e-05 - научный формат
+//	cout << "Числа: " << sNum << ' ' << sFlt << ' ' << sScientific << endl;
+}
 
 
 inline void Task12_9()
