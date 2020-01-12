@@ -24,11 +24,200 @@ inline void HelloName()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+inline void Task10_3()
+{
+	cout << "Введите число:" << endl;
+	int num;
+	cin >> num;
+	getchar();
+	char snum[256] = "";
+	while (num != 0)
+	{
+		char stmp[256];
+		strcpy_s(stmp, _countof(stmp), snum);
+		sprintf_s(snum, _countof(snum), "%d", num % 8);
+		strcat_s(snum, stmp);
+		//cout << num % 8;
+		num /= 8;
+	}
+	cout << snum << endl;	
+	cin.get();
+}
+inline bool isSimple( int n )
+{
+	int k = 2;
+	while ( k*k <= n && n%k != 0 )
+		k++;
+	return ( k*k > n );
+}
+bool isArmstrong(int num)
+{
+	int count = 0;
+	int numtmp = num;
+	while (numtmp != 0)
+	{
+		count++;
+		numtmp /= 10;
+	}
+	int summ = 0;
+	numtmp = num;
+	while (numtmp != 0)
+	{
+		summ += powf(numtmp % 10, count);
+		numtmp /= 10;
+	}
+	if (summ == num)
+		return true;
+	return false;
+}
+inline void Task10_2()
+{
+	printf_s("Числа Армстронга:\n");
+
+	for (int i = 100; i < 10000; i++)
+		if (isArmstrong(i))
+			printf_s("%d ", i);
+
+	getchar();
+}
+void getStrAges(int number, char * strs)
+{
+	strcpy_s(strs, 33, "");
+
+	switch (number / 100 % 10)
+	{
+	case 1: strcat_s(strs, 33, " сто");
+		break;
+	case 2: strcat_s(strs, 33, " двести");
+		break;
+	case 3: strcat_s(strs, 33, " триста");
+		break;
+	case 4: strcat_s(strs, 33, " четыреста");
+		break;
+	case 5: strcat_s(strs, 33, " пятьсот");
+		break;
+	case 6: strcat_s(strs, 33, " шестьсот");
+		break;
+	case 7: strcat_s(strs, 33, " семьсот");
+		break;
+	case 8: strcat_s(strs, 33, " восемьсот");
+		break;
+	case 9: strcat_s(strs, 33, " девятьсот");
+		break;
+	}
+	switch (number / 10 % 10)
+	{
+	case 1:
+		switch (number % 10)
+		{
+		case 1: strcat_s(strs, 33, " одинадцать");
+			break;
+		case 2: strcat_s(strs, 33, " двенадцать");
+			break;
+		case 3: strcat_s(strs, 33, " тринадцать");
+			break;
+		case 4: strcat_s(strs, 33, " четырнадцать");
+			break;
+		case 5: strcat_s(strs, 33, " пятнадцать");
+			break;
+		case 6: strcat_s(strs, 33, " шестнадцать");
+			break;
+		case 7: strcat_s(strs, 33, " семнадцать");
+			break;
+		case 8: strcat_s(strs, 33, " восемнадцать");
+			break;
+		case 9: strcat_s(strs, 33, " девятнадцать");
+			break;
+		case 0: strcat_s(strs, 33, " десять");
+			break;
+		}
+		break;
+	case 2: strcat_s(strs, 33, " двадцать");
+		break;
+	case 3: strcat_s(strs, 33, " тридцать");
+		break;
+	case 4: strcat_s(strs, 33, " сорок");
+		break;
+	case 5: strcat_s(strs, 33, " пятьдесят");
+		break;
+	case 6: strcat_s(strs, 33, " шесьдесят");
+		break;
+	case 7: strcat_s(strs, 33, " семьдесят");
+		break;
+	case 8: strcat_s(strs, 33, " восемьдесят");
+		break;
+	case 9: strcat_s(strs, 33, " девяносто");
+		break;
+	}
+	if (number / 10 % 10 != 1)
+		switch (number % 10)
+		{
+		case 1: strcat_s(strs, 33, " один");
+			break;
+		case 2: strcat_s(strs, 33, " два");
+			break;
+		case 3: strcat_s(strs, 33, " три");
+			break;
+		case 4: strcat_s(strs, 33, " четыре");
+			break;
+		case 5: strcat_s(strs, 33, " пять");
+			break;
+		case 6: strcat_s(strs, 33, " шесть");
+			break;
+		case 7: strcat_s(strs, 33, " семь");
+			break;
+		case 8: strcat_s(strs, 33, " восемь");
+			break;
+		case 9: strcat_s(strs, 33, " девять");
+			break;
+		}
+	if (number == 0)
+		strcat_s(strs, 33, " ноль");
+}
+
+void Task10_1()
+{
+	while (true)
+	{
+		printf_s("Введите число (-1 - выход):");
+		int number;
+		scanf_s(" %d", &number);
+		getchar();
+		if (number == -1)
+			break;
+		char strs[33];
+		getStrAges(number, strs);
+		printf_s("%s\n", strs);
+	}
+}
+
 bool isOneByte(int num)
 {
 	return num <= 255;
 }
-
 inline void Task22_9()
 {
 	cout << "Введите число: ";
@@ -42,10 +231,6 @@ inline void Task22_9()
 
 	cin.get();
 }
-
-
-
-
 
 string toDSys(int num)
 {

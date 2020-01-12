@@ -5,16 +5,35 @@
 #include <string>
 #include <sstream>
 
+
+
+
+
+
 using namespace std;
 int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
+	////////////////////////////////
 
-	float a = -12.25;
-	cout << a;
+	const int n = 10;
+	int arr[n] = {};
+	int i = 10;
+	for (auto &element : arr)
+		element = i++;
+	int temp;
+	for (int i = 0; i < n/2; i++)
+	{
+		temp = arr[i];
+		arr[i] = arr[n - 1 - i];
+		arr[n - 1 - i] = temp;
+	}
+	
+
 	
 	cin.get();
+	////////////////////////////////
 	return 0;
 }
 
