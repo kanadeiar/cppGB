@@ -1,11 +1,19 @@
 #include <stdio.h>
 #include  <math.h>
+#include <windows.h>
+#include <time.h>
+
+#define SIZE 10
+
 
 int main(int argc, char * args[])
 {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 
-	printf_s("Hello!");
 
+	
 	getchar();
+	return 0;
 }
 
