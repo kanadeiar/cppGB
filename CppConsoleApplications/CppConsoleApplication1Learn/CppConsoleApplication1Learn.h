@@ -6,6 +6,7 @@
 #include <time.h>
 #include <string>
 #include <iomanip>
+#include <windows.h>
 
 //вывод привествия
 using namespace std;
@@ -19,6 +20,12 @@ inline void HelloName()
 	strcat_s(welcome, _countof(welcome), name);
 	strcat_s(welcome, _countof(welcome), "!");
 	puts(welcome);
+}
+
+inline void Ru()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 }
 
 

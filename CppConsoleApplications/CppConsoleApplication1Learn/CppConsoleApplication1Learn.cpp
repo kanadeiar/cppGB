@@ -6,18 +6,14 @@
 #include <sstream>
 
 
-
-
-
-
 using namespace std;
 int main()
 {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-	////////////////////////////////
+	Ru();
 
 
+	
+	
 	
 	cin.get();
 	////////////////////////////////
