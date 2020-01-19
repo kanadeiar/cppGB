@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <string>
 #include <sstream>
+#include <fstream>
 
 
 using namespace std;
@@ -12,7 +13,11 @@ int main()
 	Ru();
 
 
+
 	
+	
+
+
 	
 	
 	cin.get();
