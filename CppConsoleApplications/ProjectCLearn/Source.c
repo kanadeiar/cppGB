@@ -7,14 +7,11 @@
 
 
 
-
 int main(int argc, char * args[])
 {
 	Ru();
 	
 
-	
-	getchar();
 	return 0;
 }
 
