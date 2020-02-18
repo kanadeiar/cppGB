@@ -5,45 +5,28 @@
 #include <string>
 #include <sstream>
 #include <fstream>
-
+#include <vector>
 
 
 using namespace std;
 int main()
 {
 	Ru();
-	string s;
+	//int * arr = new int[10];
+	//delete [] arr;
 
-	ifstream fin;
-	fin.open("data.txt");
-	if (fin)
-	{
-		int i = 1;
-		while (getline(fin, s))
-		{
-			int p = s.rfind(' ');
-			string st = s.substr(p + 1);
-			int balls = stoi(st);
-			if (balls >= 80)
-			{
-				st = s.substr(0, p);
-				cout << i++ << ") " << st << endl;
-			}
-			
-		}
-	}
-	else
-	{
-		cout << "Не открылся файл.";
-		cin.get();
-		exit(1);
-	}
+	vector<int> arr;
+	cout << "Size: " << arr.size() << endl;
+	for (int i = 0; i<10; i++)
+		arr.push_back(i+1);
+	for (int i = 0; i<10; i++)
+		cout << arr[i] << " ";
+	cout << endl << "Size: " << arr.size() << endl;
+
 
 	
-	fin.close();
-
-	cin.get();
 	////////////////////////////////
+	cin.get();
 	return 0;
 }
 
