@@ -5,25 +5,25 @@
 #include <stdlib.h>
 #include "Header.h"
 
+#include "Trees.h"
 
-#include "MQueue.h"
 
-
+Node * tree;
 
 int main(int argc, char * args[])
 {
 	Ru();
-	TQueue * queue = (TQueue*) malloc(sizeof(TQueue));
-	MQInit(queue);
-	for (int i = 0; i<9; i++)
-		MQPush(queue, i);
-	while (!MQEmpty(queue))
-		printf("%d\n", MQPop(queue));
-	puts("Again:");
-	for (int i = 0; i<9; i++)
-		MQPush(queue, i*i);
-	while (!MQEmpty(queue))
-		printf("%d\n", MQPop(queue));
+	char s[80] = "40-2*3-4*5";
+	tree = MakeTree(s);
+	const int rs = Calc(tree);
+	printf("Результат: %d\n", rs);
+
+	puts("Печать:");
+	PrePrint(tree);
+	printf("\n");
+	puts("Печать:");
+	PostPrint(tree);
+	printf("\n");
 	
 	getchar();
 }

@@ -143,11 +143,16 @@
       <SDLCheck Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</SDLCheck>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
     </ClCompile>
+    <ClCompile Include="Trees.c">
+      <SDLCheck Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</SDLCheck>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />
     <ClInclude Include="MQueue.h" />
     <ClInclude Include="MStack.h" />
+    <ClInclude Include="Trees.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
