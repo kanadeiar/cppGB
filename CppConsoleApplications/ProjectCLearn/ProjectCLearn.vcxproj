@@ -149,6 +149,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Grafs.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="MQueue.h" />
     <ClInclude Include="MStack.h" />
