@@ -14,7 +14,7 @@ int main(int argc, char * args[])
 {
 	Ru();
 
-	DoGraf1();
+	DoGraf();
 	
 	
 	getchar();
