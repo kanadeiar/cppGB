@@ -3,6 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
+void DoDeikstraGraf();
 
-void DoGraf();
-
+void DoFloydWarshal();

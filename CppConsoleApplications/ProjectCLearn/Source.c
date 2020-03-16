@@ -14,8 +14,9 @@ int main(int argc, char * args[])
 {
 	Ru();
 
-	DoGraf();
+	//DoDeikstraGraf();
 	
+	DoFloydWarshal();
 	
 	getchar();
 }
