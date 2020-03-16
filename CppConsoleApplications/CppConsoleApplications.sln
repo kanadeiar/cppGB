@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppConsoleApplication1", "C
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProjectCLearn", "ProjectCLearn\ProjectCLearn.vcxproj", "{F1A03166-A4AF-469A-A3B7-70B80A2373A2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.vcxproj", "{84CEE0AD-0B28-46E6-AF44-F785A1D52C25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,16 @@ Global
 		{F1A03166-A4AF-469A-A3B7-70B80A2373A2}.Release|x64.Build.0 = Release|x64
 		{F1A03166-A4AF-469A-A3B7-70B80A2373A2}.Release|x86.ActiveCfg = Release|Win32
 		{F1A03166-A4AF-469A-A3B7-70B80A2373A2}.Release|x86.Build.0 = Release|Win32
+		{84CEE0AD-0B28-46E6-AF44-F785A1D52C25}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{84CEE0AD-0B28-46E6-AF44-F785A1D52C25}.Debug|x64.ActiveCfg = Debug|x64
+		{84CEE0AD-0B28-46E6-AF44-F785A1D52C25}.Debug|x64.Build.0 = Debug|x64
+		{84CEE0AD-0B28-46E6-AF44-F785A1D52C25}.Debug|x86.ActiveCfg = Debug|Win32
+		{84CEE0AD-0B28-46E6-AF44-F785A1D52C25}.Debug|x86.Build.0 = Debug|Win32
+		{84CEE0AD-0B28-46E6-AF44-F785A1D52C25}.Release|Any CPU.ActiveCfg = Release|Win32
+		{84CEE0AD-0B28-46E6-AF44-F785A1D52C25}.Release|x64.ActiveCfg = Release|x64
+		{84CEE0AD-0B28-46E6-AF44-F785A1D52C25}.Release|x64.Build.0 = Release|x64
+		{84CEE0AD-0B28-46E6-AF44-F785A1D52C25}.Release|x86.ActiveCfg = Release|Win32
+		{84CEE0AD-0B28-46E6-AF44-F785A1D52C25}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

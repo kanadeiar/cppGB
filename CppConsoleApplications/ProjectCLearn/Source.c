@@ -14,9 +14,9 @@ int main(int argc, char * args[])
 {
 	Ru();
 
-	//DoDeikstraGraf();
+	BestFibonacci();
 	
-	DoFloydWarshal();
+	RetFibonacci();
 	
 	getchar();
 }

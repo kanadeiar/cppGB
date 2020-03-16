@@ -6,3 +6,8 @@
 void DoDeikstraGraf();
 
 void DoFloydWarshal();
+
+void BestFibonacci();
+
+void RetFibonacci();
+
