@@ -53,3 +53,19 @@ void TPen::setColor(string newColor)
 		s >> hex >> FColor;
 	}
 }
+
+void TLogElement::setIn2(bool newIn2)
+{
+	FIn2=newIn2;
+	calc();
+}
+void TLogElement::setIn1(bool newIn1)
+{
+	FIn1=newIn1;
+	calc();
+}
+
+void TNot::calc()
+{
+	FRes=!getIn1;
+}
