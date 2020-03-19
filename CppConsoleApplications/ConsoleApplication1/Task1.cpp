@@ -1,6 +1,9 @@
 #include <stdio.h>
+#include <sstream>
+#include <iomanip>
 #include "Task1.h"
 
+using namespace std;
 TRoad::TRoad()
 {
 	Length = 100;
@@ -34,4 +37,19 @@ void TCar::Move()
 		X=0;
 }
 
-
+string TPen::getColor() {
+	stringstream s;
+	s << setfill('0') << setw(6) << hex << FColor;
+	return s.str();
+}
+void TPen::setColor(string newColor)
+{
+	stringstream s;
+	if (newColor.length()!=6)
+		FColor=0;
+	else
+	{
+		s << newColor;
+		s >> hex >> FColor;
+	}
+}

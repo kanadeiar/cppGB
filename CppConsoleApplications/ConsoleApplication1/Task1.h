@@ -1,5 +1,7 @@
 #pragma once
+#include <string>
 
+using namespace std;
 class TRoad
 {
 public:
@@ -18,4 +20,13 @@ public:
 	void Move();
 	TCar();
 	TCar( TRoad * road0, int p0, float v0);
+};
+
+class TPen
+{
+private:
+	int FColor;
+public:
+	string getColor();
+	void setColor(string newColor);
 };

@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <conio.h>
 
 #include "ConsoleApplication1.h"
 #include "Task1.h"
@@ -9,14 +10,24 @@ int main()
 	Ru();
 	
 	puts("Задача 1.");
-	TRoad road1;
-	printf("Data road: %d %.1f\n", road1.Width, road1.Length);
-	TCar car1;
-	printf("Data car: %.1f %.1f %d\n", car1.X, car1.V, car1.P);
+	TRoad road(60, 3);
+	const int N=3;
+	TCar * cars[N];
+	for (int i=0; i<N; i++)
+	{
+		cars[i] = new TCar(&road, i+1, 2.0*(i+1));
+	}
+	do
+	{
+		for (int i=0; i<N; i++)
+			cars[i]->Move();
+	}
+	while (!_kbhit());
 	
-	
-	
-	
+	TPen pen;
+	pen.setColor("FFFF00");
+	cout << "Цвет пера: " << pen.getColor();
+
 	getchar();
 }
 
