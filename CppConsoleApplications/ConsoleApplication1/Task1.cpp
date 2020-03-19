@@ -54,18 +54,43 @@ void TPen::setColor(string newColor)
 	}
 }
 
+//TLogElement::TLogElement()
+//{
+//	FNextEl=NULL;
+//}
+void TLogElement::setIn1(bool newIn1)
+{
+	FIn1=newIn1;
+	calc();
+	if (FNextEl) //если следующий элемент задан, то изменение его входов
+		switch (FNextIn)
+		{
+		case 1: FNextEl->setIn1(getRes()); 
+			break;
+		case 2: FNextEl->setIn2(getRes()); 
+			break;
+		}
+}
+//связь с другим классом
+void TLogElement::Link(TLogElement* nextElement, int nextIn)
+{
+	FNextEl=nextElement;
+	FNextIn=nextIn;
+}
 void TLogElement::setIn2(bool newIn2)
 {
 	FIn2=newIn2;
 	calc();
 }
-void TLogElement::setIn1(bool newIn1)
-{
-	FIn1=newIn1;
-	calc();
-}
-
 void TNot::calc()
 {
-	FRes=!getIn1;
+	FRes=!getIn1();
+}
+void TAnd::calc()
+{
+	FRes=getIn1()&&getIn2();
+}
+void TOr::calc()
+{
+	FRes=getIn1()||getIn2();
 }
