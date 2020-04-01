@@ -17,18 +17,8 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void buttonOpenFile_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog.ShowDialog()==DialogResult.OK)
-                pictureBoxImg.Image=new Bitmap(openFileDialog.FileName);
-        }
+        
 
-        private void checkBoxWindow_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxWindow.Checked)
-                pictureBoxImg.SizeMode=PictureBoxSizeMode.Zoom;
-            else
-                pictureBoxImg.SizeMode=PictureBoxSizeMode.Normal;
-        }
+
     }
 }
