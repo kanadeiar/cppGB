@@ -1,10 +1,8 @@
-﻿//add
-using System;
+﻿using System;
 //using System.Collections.Generic;
 //using System.Linq;
 //using System.Text;
 //using System.Threading.Tasks;
-//add
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -16,6 +14,7 @@ namespace Game
         public static BufferedGraphics Buffer;
         public static int Width {get;set;}
         public static int Height {get;set;}
+        public static Random rand = new Random();
         static Game()
         {
         }
@@ -52,11 +51,17 @@ namespace Game
         public static BaseObject[] objs;
         public static void Load()
         {
-            objs = new BaseObject[20];
-            for (int i = 0; i < objs.Length/2; i++)
-                objs[i] = new BaseObject(new Point(600, i*20), new Point(-i,-i), new Size(10, 10));
-            for (int i = objs.Length/2; i < objs.Length; i++)
-                objs[i] = new Star(new Point(600, i*20), new Point(-i,0), new Size(10, 10));
+            objs = new BaseObject[100];
+            for (int i = 0; i < objs.Length; i++)
+            {
+                int randsize = i switch
+                {
+                    int ik when ik < 90 => rand.Next(3, 9),
+                    int _ => rand.Next(10, 20)
+                };
+                int speed = randsize / 3;
+                objs[i] = new Star(new Point(rand.Next(Width-randsize), rand.Next(Height-randsize)), new Point(-speed, 0), new Size(randsize, randsize));
+            }
         }
 
     }
