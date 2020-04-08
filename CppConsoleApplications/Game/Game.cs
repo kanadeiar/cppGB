@@ -1,8 +1,4 @@
 ﻿using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -15,6 +11,9 @@ namespace Game
         public static int Width {get;set;}
         public static int Height {get;set;}
         public static Random rand = new Random();
+        private static BaseObject[] objs;
+        private static Bullet bullet;
+        private static Asteroid[] asteroids;
         static Game()
         {
         }
@@ -41,27 +40,34 @@ namespace Game
             Buffer.Graphics.Clear(Color.Black); //фон
             foreach (BaseObject obj in objs)
                 obj.Draw(Buffer.Graphics);
+            foreach (BaseObject obj in asteroids)
+                obj.Draw(Buffer.Graphics);
+            bullet.Draw(Buffer.Graphics);
             Buffer.Render(); //перерисование
         }
         public static void Update()
         {
             foreach (BaseObject obj in objs)
                 obj.Update();
+            foreach (BaseObject obj in asteroids)
+                obj.Update();
+            bullet.Update();
         }
-        public static BaseObject[] objs;
         public static void Load()
         {
             objs = new BaseObject[100];
             for (int i = 0; i < objs.Length; i++)
             {
-                int randsize = i switch
-                {
-                    int ik when ik < 90 => rand.Next(3, 9),
-                    int _ => rand.Next(10, 20)
-                };
-                int speed = randsize / 3;
-                objs[i] = new Star(new Point(rand.Next(Width-randsize), rand.Next(Height-randsize)), new Point(-speed, 0), new Size(randsize, randsize));
+                int r = rand.Next(5,50);
+                objs[i] = new Star(new Point(600, rand.Next(Height)), new Point(-r, r), new Size(4, 4));
             }
+            asteroids = new Asteroid[3];
+            for (int i = 0; i < asteroids.Length; i++)
+            {
+                int r = rand.Next(5, 50);
+                asteroids[i] = new Asteroid(new Point(600, rand.Next(Height)), new Point(-r / 5, r), new Size(r, r));
+            }
+            bullet = new Bullet(new Point(0,200), new Point(5,0), new Size(4,1));
         }
 
     }
