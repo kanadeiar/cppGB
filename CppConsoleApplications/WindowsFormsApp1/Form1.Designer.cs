@@ -28,12 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.Filter = "\"Файлы с рисунками|*.jpg;*.jpeg;*.gif;*.bmp\"";
             // 
             // FormMain
             // 
@@ -42,12 +37,12 @@
             this.ClientSize = new System.Drawing.Size(562, 334);
             this.Name = "FormMain";
             this.Text = "Тест";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 

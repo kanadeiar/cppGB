@@ -8,41 +8,52 @@ using System.IO;
 
 namespace ConsoleApp1
 {
-    public delegate void MyDelegate(object o);
-    class Source
+    class Element
     {
-        public delegate void Message(string message);
-        private event Message message;
-        private readonly List<string> user = new List<string>();
-        public Source()
+        private string fio;
+        private int ball;
+        public Element(string fio, int ball)
         {
-            user.AddRange(new[] { "Ivan", "Roman", "Stepan" });
+            this.fio = fio;
+            this.ball = ball;
         }
-        public void RemoveUser(string nameUser, Message message)
-        {
-            this.message = message;
-            if (user.Contains(nameUser))
-            {
-                user.Remove(nameUser);
-                this.message?.Invoke($"Пользователь {nameUser} удален");
-            }
-            else
-            {
-                this.message?.Invoke($"Пользователь {nameUser} не найден");
-            }
-        }
+        public string FIO => fio;
+        public int Ball => ball;
     }
 
     class Program
     {
-        private static void Message(string message)
+        static int MyDelegat(Element el1, Element el2)
         {
-            Console.WriteLine(message);
+            if (el1.Ball>el2.Ball) return 1;
+            if (el1.Ball<el2.Ball) return -1;
+            return 0;
         }
-        static void Main(string[] args)
+        static void Main()
         {
-            Source source = new Source();
-            source.RemoveUser("Ivan", Message);
+            List<Element> list = new List<Element>();
+            using (StreamReader sr = new StreamReader("data.txt"))
+            {
+                int n=int.Parse(sr.ReadLine() ?? throw new InvalidOperationException());
+                for (int i=0; i<n; i++)
+                {
+                    string[] s=sr.ReadLine()?.Split(' ');
+                    int ball=int.Parse(s[2])+int.Parse(s[3])+int.Parse(s[4]);
+                    list.Add(new Element(s[0]+" "+s[1],ball));
+                }
+            }
+            list.Sort(MyDelegat);
+            foreach (var v in list)
+            {
+                Console.WriteLine($"{v.FIO,20}{v.Ball,10}");
+            }
+            Console.WriteLine();
+            int ball2=list[2].Ball;
+            foreach (var v in list)
+            {
+                if (v.Ball<=ball2)
+                    Console.WriteLine($"{v.FIO,20}{v.Ball,10}");
+            }
             Console.ReadKey();
         }
     }
