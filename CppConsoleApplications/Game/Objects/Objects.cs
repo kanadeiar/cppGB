@@ -49,7 +49,7 @@ namespace Game
             }
         }
     }
-    class Asteroid : BaseObject
+    class Asteroid : BaseObject, ICloneable, IComparable
     {
         public int Power {get;set;} = 1;
         public Asteroid(Point pos, Point dir, Size size) : base(pos, dir, size)
@@ -59,6 +59,28 @@ namespace Game
         {
             g.FillEllipse(Brushes.White, Pos.X,Pos.Y,Size.Width,Size.Height);
         }
+        public object Clone()
+        {
+            Asteroid asteroid = new Asteroid(new Point(Pos.X, Pos.Y), new Point(Dir.X, Dir.Y), new Size(Size.Width,Size.Height))
+            { Power = Power };
+            return asteroid;
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is Asteroid tmp)
+            {
+                if (Power > tmp.Power)
+                    return 1;
+                if (Power < tmp.Power)
+                    return -1;
+                else
+                    return 0;
+            }
+            throw new ArgumentException("Par id not Asteroid!");
+        }
+
+
     }
     class Bullet : BaseObject
     {
