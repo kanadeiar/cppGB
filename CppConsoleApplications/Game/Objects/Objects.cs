@@ -5,6 +5,7 @@ namespace Game
 {
     abstract class BaseObject
     {
+        public delegate void Message();
         protected Point Pos;
         protected Point Dir;
         protected Size Size;
@@ -79,8 +80,6 @@ namespace Game
             }
             throw new ArgumentException("Par id not Asteroid!");
         }
-
-
     }
     class Bullet : BaseObject
     {
@@ -93,7 +92,44 @@ namespace Game
         }
         public override void Update()
         {
-            Pos.X+=3;
+            if (Pos.X>Game.Width)
+                Pos.Y = -100;
+            else
+                Pos.X+=3;
         }
     }
+    class Ship : BaseObject
+    {
+        public Point Rect { get => Pos; }
+        private int energy = 100;
+        public int Energy => energy;
+        public static event Message MessageDie;
+        public void EnergyLow(int n)
+        {
+            energy -= n;
+        }
+        public Ship(Point pos, Point dir, Size size) : base(pos, dir, size)
+        {
+        }
+        public override void Update()
+        {
+        }
+        public override void Draw(Graphics g)
+        {
+            g.FillRectangle(Brushes.Wheat,Pos.X,Pos.Y,Size.Width,Size.Height);
+        }
+        public void Up()
+        {
+            if (Pos.Y>0) Pos.Y = Pos.Y - Dir.Y;
+        }
+        public void Down()
+        {
+            if (Pos.Y+Size.Height<Game.Height) Pos.Y = Pos.Y + Dir.Y;
+        }
+        public void Die()
+        {
+            MessageDie?.Invoke();
+        }
+    }
+
 }
