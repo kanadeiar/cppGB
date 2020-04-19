@@ -7,7 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Text="Hello, WPF!" VerticalAlignment="Center" FontSize="36"/>
-
+        <Button FontWeight="Bold" Width="178" Height="40">
+            <WrapPanel Name="pnlMain">
+                <TextBlock Foreground="Blue">Разно</TextBlock>
+                <TextBlock Foreground="Red">цветная</TextBlock>
+                <TextBlock>кнопка</TextBlock>
+            </WrapPanel>
+        </Button>
     </Grid>
 </Window>
