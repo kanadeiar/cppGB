@@ -24,5 +24,11 @@ namespace WpfApp1HelloWPF
         {
             InitializeComponent();
         }
+        private void buttonClickMe_Click(object sender, RoutedEventArgs e)
+        {
+            lbResult.Items.Add(panelMain.FindResource("appStr").ToString());
+            lbResult.Items.Add(panelMain.FindResource("winStr").ToString());
+            lbResult.Items.Add(panelMain.FindResource("pnlStr").ToString());
+        }
     }
 }
