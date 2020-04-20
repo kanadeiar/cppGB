@@ -27,11 +27,26 @@ namespace WpfApp1HelloWPF
             InitializeComponent();
         }
 
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ComboBox comboBox = (ComboBox)sender;
-            ComboBoxItem selectedItem = (ComboBoxItem)comboBox.SelectedItem;
-            MessageBox.Show(selectedItem.Content?.ToString());
+            ChildWindow childWindow = new ChildWindow();
+            childWindow.ViewModel = "Дчернее окно";
+            childWindow.Owner = this;
+            childWindow.Show();
+            childWindow.ShowViewModel();
+            foreach (Window win in this.OwnedWindows)
+            {
+                win.Background = new SolidColorBrush(Colors.Aquamarine);
+                if (win is ChildWindow)
+                    win.Title = "Новый заголовок";
+            }
+        }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            foreach (Window win in App.Current.Windows)
+            {
+                win.Background = new SolidColorBrush(Colors.LightGreen);
+            }
         }
     }
 

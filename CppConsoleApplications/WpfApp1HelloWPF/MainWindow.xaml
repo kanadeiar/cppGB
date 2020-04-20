@@ -8,10 +8,7 @@
         mc:Ignorable="d"
         Title="Заголовок окна" Height="400" Width="600" WindowStartupLocation="CenterScreen">
     <Grid>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" SelectionChanged="comboBox_SelectionChanged">
-            <ComboBoxItem>Элемент 1</ComboBoxItem>
-            <ComboBoxItem>Элемент 2</ComboBoxItem>
-            <ComboBoxItem>Элемент 3</ComboBoxItem>
-        </ComboBox>
+        <Button Width="100" Height="30" Content="Дочернее окно" Click="Button_Click" Margin="10,10,200,10"/>
+        <Button Width="100" Height="30" Content="Цвет всех окон" Click="Button_Click_1" Margin="200,10,10,10"/>
     </Grid>
 </Window>
