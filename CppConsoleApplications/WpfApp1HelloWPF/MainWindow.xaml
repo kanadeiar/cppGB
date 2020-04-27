@@ -7,7 +7,10 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Заголовок окна" Height="400" Width="600" WindowStartupLocation="CenterScreen">
-    <StackPanel>
-        
-    </StackPanel>
+    <Window.Resources>
+        <local:Employee x:Key="Employee" Name="Вася" Age="18" Salary="9000"/>
+    </Window.Resources>
+    <Grid>
+        <TextBlock Text="{Binding StringFormat='Зарплата составляет {0} рублей', Source={StaticResource Employee}, Path=Salary}"/>
+    </Grid>
 </Window>

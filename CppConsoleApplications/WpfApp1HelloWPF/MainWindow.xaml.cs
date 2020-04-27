@@ -21,14 +21,15 @@ namespace WpfApp1HelloWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
         }
-
-
-
-
+    }
+    class Employee
+    {
+        public string Name {get;set;}
+        public int Age {get;set;}
+        public int Salary {get;set;}
     }
 }
