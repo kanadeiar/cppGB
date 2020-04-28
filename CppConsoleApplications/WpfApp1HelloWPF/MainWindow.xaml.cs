@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace WpfApp1HelloWPF
 {
@@ -22,36 +23,51 @@ namespace WpfApp1HelloWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ObservableCollection<User> users = new ObservableCollection<User>();
         public MainWindow()
         {
             InitializeComponent();
+            users.Add(new User{Name = "Петя"});
+            users.Add(new User{Name = "Коля"});
+            listBoxUsers.ItemsSource = users;
+        }
+
+        private void buttonAddUser_Click(object sender, RoutedEventArgs e)
+        {
+            users.Add(new User{Name = "Вася"});
+        }
+
+        private void buttonChangeUser_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBoxUsers.SelectedItem != null)
+                (listBoxUsers.SelectedItem as User).Name = "Иван";
+        }
+
+        private void buttonDeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBoxUsers.SelectedItem != null)
+                users.Remove(listBoxUsers.SelectedItem as User);
         }
     }
-    public class YesNoToBooleanConverter : IValueConverter
+    public class User : INotifyPropertyChanged
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        private string name;
+        public string Name
         {
-            switch(value.ToString().ToLower())
+            get => name;
+            set
             {
-                case "yes":
-                case "true":
-                    return true;
-                case "no":
-                case "false":
-                    return false;
+                if (name != value)
+                {
+                    name = value;
+                    NotifyPropertyChanged("Name");
+                }
             }
-            return false;
         }
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyPropertyChanged(string propName)
         {
-            if (value is bool)
-            {
-                if ((bool)value==true)
-                    return "yes";
-                else
-                    return "no";
-            }
-            return "no";
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
     }
 }
