@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Diagnostics;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -23,51 +24,23 @@ namespace WpfApp1HelloWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ObservableCollection<User> users = new ObservableCollection<User>();
         public MainWindow()
         {
             InitializeComponent();
-            users.Add(new User{Name = "Петя"});
-            users.Add(new User{Name = "Коля"});
-            listBoxUsers.ItemsSource = users;
-        }
-
-        private void buttonAddUser_Click(object sender, RoutedEventArgs e)
-        {
-            users.Add(new User{Name = "Вася"});
-        }
-
-        private void buttonChangeUser_Click(object sender, RoutedEventArgs e)
-        {
-            if (listBoxUsers.SelectedItem != null)
-                (listBoxUsers.SelectedItem as User).Name = "Иван";
-        }
-
-        private void buttonDeleteUser_Click(object sender, RoutedEventArgs e)
-        {
-            if (listBoxUsers.SelectedItem != null)
-                users.Remove(listBoxUsers.SelectedItem as User);
         }
     }
-    public class User : INotifyPropertyChanged
+    public class DebugDummyConverter : IValueConverter
     {
-        private string name;
-        public string Name
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            get => name;
-            set
-            {
-                if (name != value)
-                {
-                    name = value;
-                    NotifyPropertyChanged("Name");
-                }
-            }
+            Debugger.Break();
+            return value;
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void NotifyPropertyChanged(string propName)
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+            Debugger.Break();
+            return value;
         }
     }
 }

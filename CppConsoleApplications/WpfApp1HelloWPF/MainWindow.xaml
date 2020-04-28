@@ -6,12 +6,10 @@
         xmlns:local="clr-namespace:WpfApp1HelloWPF"
         mc:Ignorable="d"
         Title="Заголовок окна" Height="400" Width="600" WindowStartupLocation="CenterScreen">
-    <DockPanel>
-        <StackPanel DockPanel.Dock="Right" Margin="10,0,0,0">
-            <Button Name="buttonAddUser" Click="buttonAddUser_Click">Добавить</Button>
-            <Button Name="buttonChangeUser" Click="buttonChangeUser_Click" Margin="0,5">Изменить</Button>
-            <Button Name="buttonDeleteUser" Click="buttonDeleteUser_Click">Удалить</Button>
-        </StackPanel>
-        <ListBox Name="listBoxUsers" DisplayMemberPath="Name"></ListBox>
-    </DockPanel>
+    <Window.Resources>
+        <local:DebugDummyConverter x:Key="DebugDummyConverter"/>
+    </Window.Resources>
+    <Grid Margin="10">
+        <TextBlock Text="{Binding Title, ElementName=wnd, Converter={StaticResource DebugDummyConverter}}"/>
+    </Grid>
 </Window>
