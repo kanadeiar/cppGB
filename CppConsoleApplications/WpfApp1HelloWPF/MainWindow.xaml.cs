@@ -28,11 +28,7 @@ namespace WpfApp1HelloWPF
         {
             InitializeComponent();
         }
-        private void buttonMy_Click(object sender, RoutedEventArgs e)
-        {
-            string s = null;
-            int length = s.Length;
-        }
+
     }
 
 

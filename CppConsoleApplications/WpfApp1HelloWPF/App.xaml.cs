@@ -16,13 +16,8 @@ namespace WpfApp1HelloWPF
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             MainWindow wnd = new MainWindow();
-
             wnd.Show();
         }
 
-        private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
-        {
-            MessageBox.Show($"Исключение: {e.Exception.Message}", "Исключение", MessageBoxButton.OK,MessageBoxImage.Warning);
-        }
     }
 }
