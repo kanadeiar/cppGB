@@ -6,19 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1HelloWPF"
         mc:Ignorable="d"
         Title="Заголовок окна" Height="400" Width="600" WindowStartupLocation="CenterScreen">
-    <Grid Margin="10">
-        <TextBlock Text="Триггер" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="Blue"></Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Red"/>
-                            <Setter Property="TextDecorations" Value="Underline"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
+    <Grid>
+        <Button x:Name="buttonMy" Content="Моя кнопка" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Click="buttonMy_Click"/>
     </Grid>
 </Window>
