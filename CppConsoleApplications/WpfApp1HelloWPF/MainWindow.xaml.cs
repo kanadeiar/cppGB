@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace WpfApp1HelloWPF
 {
@@ -25,7 +26,7 @@ namespace WpfApp1HelloWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        string count = "INSERT INTO [People] (FIO,Birthday,Email,Phone) VALUES ('Иванов Иван Иванович','01.01.2001','some@some.ru','89297771111');";
+        string sql = "SELECT * FROM People";
         public MainWindow()
         {
             InitializeComponent();
@@ -33,9 +34,21 @@ namespace WpfApp1HelloWPF
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(count, connection);
-                int newId = Convert.ToInt32(command.ExecuteScalar());
-                MessageBox.Show($"Добавлена запись с ид: {newId}");
+                SqlCommand command = new SqlCommand(sql, connection);
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var id = Convert.ToInt32(reader.GetValue(0));
+                        var fio = reader.GetString(1);
+                        var birthday = reader.GetString(2);
+                        var email = reader["Email"];
+                        var phone = reader.GetString(reader.GetOrdinal("Phone"));
+                        MessageBox.Show($"{id}\n{fio} {birthday}\n{email} {phone}");
+                    }
+                }
+                reader.Close();
                 connection.Close();
             }
         }
