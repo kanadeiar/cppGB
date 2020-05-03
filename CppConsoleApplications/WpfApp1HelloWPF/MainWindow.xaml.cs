@@ -26,7 +26,7 @@ namespace WpfApp1HelloWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        string sql = "SELECT * FROM People";
+        string sqlWhere = "SELECT * FROM People WHERE Birthday = @Birthday";
         public MainWindow()
         {
             InitializeComponent();
@@ -34,7 +34,8 @@ namespace WpfApp1HelloWPF
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(sql, connection);
+                SqlCommand command = new SqlCommand(sqlWhere, connection);
+                command.Parameters.AddWithValue("@Birthday","03.03.2011");
                 SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
                 if (reader.HasRows)
                 {
