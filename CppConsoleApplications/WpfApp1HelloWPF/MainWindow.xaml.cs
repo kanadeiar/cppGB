@@ -67,24 +67,39 @@ namespace WpfApp1HelloWPF
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
             DataRow newRow = dt.NewRow();
-
-
+            EditWindow editWindow = new EditWindow(newRow);
+            editWindow.ShowDialog();
+            if (editWindow.DialogResult.HasValue && editWindow.DialogResult.Value)
+            {
+                dt.Rows.Add(editWindow.resultRow);
+                adapter.Update(dt);
+            }
         }
-
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
             DataRowView newRow = (DataRowView)peopleDataGrid.SelectedItem;
+            if (newRow == null)
+                return;
             newRow.BeginEdit();
-
+            EditWindow editWindow = new EditWindow(newRow.Row);
+            editWindow.ShowDialog();
+            if (editWindow.DialogResult.HasValue && editWindow.DialogResult.Value)
+            {
+                newRow.EndEdit();
+                adapter.Update(dt);
+            }
+            else
+            {
+                newRow.CancelEdit();
+            }
         }
-
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
             DataRowView newRow = (DataRowView)peopleDataGrid.SelectedItem;
+            if (newRow == null)
+                return;
             newRow.Row.Delete();
             adapter.Update(dt);
         }
-
-
     }
 }
