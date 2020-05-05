@@ -26,35 +26,27 @@ namespace WpfApp1HelloWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        string sqlWhere = "SELECT * FROM People WHERE Birthday = @Birthday";
         public MainWindow()
         {
             InitializeComponent();
             string connectionString = @"data source = DESKTOP-Q5PLE8H\SQLEXPRESS; Initial Catalog = Lesson7; Integrated Security = True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlWhere, connection);
-                command.Parameters.AddWithValue("@Birthday","03.03.2011");
-                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        var id = Convert.ToInt32(reader.GetValue(0));
-                        var fio = reader.GetString(1);
-                        var birthday = reader.GetString(2);
-                        var email = reader["Email"];
-                        var phone = reader.GetString(reader.GetOrdinal("Phone"));
-                        MessageBox.Show($"{id}\n{fio} {birthday}\n{email} {phone}");
-                    }
-                }
-                reader.Close();
-                connection.Close();
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                SqlCommand selectCmd = new SqlCommand("SELECT * FROM People", connection);
+                adapter.SelectCommand = selectCmd;
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                
+                DataTable dt = ds.Tables[0];
+                DataRow newRow = dt.NewRow();
+                newRow["FIO"] = "Тестов Тест Тестович";
+                newRow["Birthday"] = "25.05.2002";
+                dt.Rows.Add(newRow);
+
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(adapter);
+                adapter.Update(ds);
             }
         }
     }
-
-
-
 }
