@@ -20,6 +20,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1HelloWPF", "WpfApp1HelloWPF\WpfApp1HelloWPF.csproj", "{0DD0989B-495C-4184-8BA4-7AE83F2CA3DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1WCFClient", "WpfApp1WCFClient\WpfApp1WCFClient.csproj", "{2A1D0B3B-7790-4209-87AC-956931A68CAC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7F1AFB4F-4761-4B99-B235-BF870FF1294A} = {7F1AFB4F-4761-4B99-B235-BF870FF1294A}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService1", "WcfService1\WcfService1.csproj", "{7F1AFB4F-4761-4B99-B235-BF870FF1294A}"
 EndProject

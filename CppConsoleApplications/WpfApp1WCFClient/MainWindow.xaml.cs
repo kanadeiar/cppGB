@@ -24,6 +24,20 @@ namespace WpfApp1WCFClient
         {
             InitializeComponent();
         }
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ServiceReference1.Service1Client service = new ServiceReference1.Service1Client();
+            try
+            {
+                int day = Convert.ToInt32(dayTextBox.Text);
+                int month = Convert.ToInt32(monthTextBox.Text);
+                int year = Convert.ToInt32(yearTextBox.Text);
+                resultTextBlock.Text = "Дней: " + service.CalculateDays(day,month,year);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка!\n"+ex.Message);
+            }
+        }
     }
 }
