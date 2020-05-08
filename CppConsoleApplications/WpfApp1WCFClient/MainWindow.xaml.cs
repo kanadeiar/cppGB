@@ -25,11 +25,5 @@ namespace WpfApp1WCFClient
             InitializeComponent();
         }
 
-        private void summButton_Click(object sender, RoutedEventArgs e)
-        {
-            ServiceReference1.WebService1SoapClient serviceClient = new ServiceReference1.WebService1SoapClient();
-            string sum = serviceClient.Summ(textBox1.Text,textBox2.Text);
-            resultTextBlock.Text = sum;
-        }
     }
 }
