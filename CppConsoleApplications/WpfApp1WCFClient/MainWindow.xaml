@@ -7,15 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="600" Background="AliceBlue">
     <Grid>
-        <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-        <Grid.RowDefinitions><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/></Grid.RowDefinitions>
-        <TextBlock Text="День" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10"/>
-        <TextBlock Text="Месяц" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10"/>
-        <TextBlock Text="Год" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10"/>
-        <TextBox x:Name="dayTextBox" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Height="26" VerticalAlignment="Center" Width="200" Margin="10"/>
-        <TextBox x:Name="monthTextBox" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Height="26" VerticalAlignment="Center" Width="200" Margin="10"/>
-        <TextBox x:Name="yearTextBox" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" Height="26" VerticalAlignment="Center" Width="200" Margin="10"/>
-        <Button Click="Button_Click" Grid.Row="3" Content="Вычислить" HorizontalAlignment="Center" Width="100" Margin="10"/>
-        <TextBlock x:Name="resultTextBlock" Text="Дней: " Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10"/>
+        
+        
+        
+        
     </Grid>
 </Window>
