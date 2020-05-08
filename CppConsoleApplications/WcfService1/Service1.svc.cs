@@ -29,5 +29,13 @@ namespace WcfService1
             }
             return composite;
         }
+
+        public int CalculateDays(int day, int mounth, int year)
+        {
+            DateTime dt = new DateTime(year,mounth,day);
+            int datetodays = DateTime.Now.Subtract(dt).Days;
+            return datetodays;
+        }
+
     }
 }

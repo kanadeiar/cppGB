@@ -19,10 +19,11 @@ namespace WcfService1
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
+        [OperationContract]
+        int CalculateDays(int day, int mounth, int year);
+
         // TODO: Добавьте здесь операции служб
     }
-
-
     // Используйте контракт данных, как показано в примере ниже, чтобы добавить составные типы к операциям служб.
     [DataContract]
     public class CompositeType
