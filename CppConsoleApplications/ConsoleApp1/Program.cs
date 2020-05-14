@@ -4,26 +4,20 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
+using ClassLibrary1;
+
 namespace ConsoleApp1
 {
-
-
     class Program
     {
-        class MyClass
-        {
-            private Lazy<String> name = new Lazy<String>(() => "новая строка");
-            public String GetName()
-            {
-                return name.Value; //значение с отложенной инициализацией
-            }
-        }
         public static void Main()
         {
-            MyClass my = new MyClass();
-            Console.WriteLine(my.GetName()); //здесь размещение объекта в памяти
+            Worker worker = new Worker("Вася",18,5000);
+            worker.AddSalary();
+            Manager manager = new Manager("Петя",20,10000);
+            manager.AddSalary();
+            Console.WriteLine("Нажмите любую кнопку");
             Console.ReadLine();
         }
-
     }
 }
