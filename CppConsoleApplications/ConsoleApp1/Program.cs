@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-using ClassLibrary1;
+
 
 using System.Configuration;
+using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
@@ -14,8 +15,18 @@ namespace ConsoleApp1
     {
         public static void Main()
         {
-
+            Run();
             Console.ReadLine();
+            async void Run()
+            {
+                while (true)
+                {
+                    Console.WriteLine("Text Text Текст Текст");
+                    await Task.Delay(1000);
+                }
+            }
         }
+
+
     }
 }
