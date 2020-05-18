@@ -58,11 +58,5 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MySnappableTypes\MySnappableTypes.csproj">
-      <Project>{e850abaa-2843-4e8c-9a57-7040e7a6ab90}</Project>
-      <Name>MySnappableTypes</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
