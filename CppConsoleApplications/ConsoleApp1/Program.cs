@@ -1,28 +1,36 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 
-using Excel = Microsoft.Office.Interop.Excel;
+
 namespace ConsoleApp1
 {
     class Program
     {
         public static void Main()
         {
-            Excel.Application excelApp = new Excel.Application();
-            excelApp.Workbooks.Add();
-            Excel.Worksheet worksheet = excelApp.ActiveSheet;
-            worksheet.Cells[1, "A"] = "Fam";
-            worksheet.Cells[2, "B"] = "Name";
-            worksheet.Cells[3, "C"] = "Age";
-            for (int i = 0; i <= 5; i++)
+            Process myProc = null;
+            try
             {
-                worksheet.Cells[i + 1, "A"] = $"Фамилия{i}";
-                worksheet.Cells[i + 1, "B"] = $"{i}-е имя";
-                worksheet.Cells[i + 1, "C"] = 18 + i;
+                ProcessStartInfo startInfo = new ProcessStartInfo("firefox.exe", "www.yandex.ru");
+                startInfo.WindowStyle = ProcessWindowStyle.Maximized;
+                myProc = Process.Start(startInfo);
             }
-            worksheet.Range["A1"].AutoFormat(Excel.XlRangeAutoFormat.xlRangeAutoFormatClassic2);
-            excelApp.Visible = true;
-            worksheet.SaveAs($@"{Environment.CurrentDirectory}\Test.xlsx");
-            //excelApp.Quit();
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return;
+            }
+            Console.WriteLine($"Нажмите клавишу для закрытия процесса '{myProc.ProcessName}'");
+            Console.ReadKey();
+            try
+            {
+                myProc.Kill();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             Console.ReadLine();
         }
     }
