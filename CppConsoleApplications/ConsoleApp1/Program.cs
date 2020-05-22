@@ -1,40 +1,42 @@
 ﻿using System;
+using System.Runtime.Remoting.Contexts;
 using System.Threading;
 
 namespace ConsoleApp1
 {
     class Program
     {
-        static Random r = new Random();
         class MyClass
         {
-            private object thredLock = new object(); //маркер блокировки
-            public void Print()
+            public int A { get; set; }
+            public int B { get; set; }
+            public MyClass(int a, int b)
             {
-                lock (thredLock) //использование маркера блокировки
-                {
-                    Console.WriteLine($"Поток \"{Thread.CurrentThread.Name}\" числа: ");
-                    for (int i = 0; i < 10; i++)
-                    {
-                        Console.Write($"{i + 1},");
-                        Thread.Sleep(1000 * r.Next(3));
-                    }
-                    Console.Write("конец\n");
-                }
+                this.A = a;
+                this.B = b;
             }
         }
         public static void Main()
         {
-            MyClass myClass = new MyClass();
-            Thread[] threads = new Thread[10]; //10 потоков
+            Console.WriteLine($"Работа Main() в потоке {Thread.CurrentThread.Name}");
+            MyClass myClass = new MyClass(2,2);
+            WaitCallback workItem = new WaitCallback(MyPrint); 
             for (int i = 0; i < 10; i++)
-            {
-                threads[i] = new Thread(new ThreadStart(myClass.Print));
-                threads[i].Name = $"Поток № {i+1}";
-            }
-            foreach (var th in threads)
-                th.Start();
+                ThreadPool.QueueUserWorkItem(workItem, myClass); //запуск метода в очередь 10 раз
+            Console.WriteLine("Нажать кнопку для завершения всех потоков");
             Console.ReadLine();
+        }
+        static void MyPrint(object data)
+        {
+            if (data is MyClass myClass)
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    Console.WriteLine($"Поток {Thread.CurrentThread.Name}: {myClass.A} + {myClass.B} = {myClass.A + myClass.B}");
+                    myClass.A++;
+                    Thread.Sleep(1000);
+                }
+            }
         }
 
     }
