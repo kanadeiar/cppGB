@@ -23,9 +23,5 @@
             <Button Name="cmdCancel" Grid.Row="0" Grid.Column="0" Margin="5,5,5,5" Click="CmdCancel_OnClick" Content="Отмена"/>
             <Button Name="cmdProcess" Grid.Row="0" Grid.Column="2" Margin="5,5,5,5" Click="CmdProcess_OnClick" Content="Обработка!"></Button>
         </Grid>
-
-
-
-
     </Grid>
 </Window>
