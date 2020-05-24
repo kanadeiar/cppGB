@@ -1,23 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http.Headers;
-using System.Threading;
-using System.Threading.Tasks;
+using System.IO;
+using System.Text;
 
 namespace ConsoleApp1
 {
     class Program
     {
-        static void Main() //вызов в неблокирующей манере
+        static void Main() 
         {
 
 
 
-            Console.WriteLine("Нажмите любую кнопку ...");
+            Console.WriteLine("Нажмите любую кнопку для завершения");
             Console.ReadKey();
         }
-
     }
 }
