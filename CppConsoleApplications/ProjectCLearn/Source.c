@@ -13,11 +13,9 @@
 int main(int argc, char * args[])
 {
 	Ru();
-
 	BestFibonacci();
-	
 	RetFibonacci();
-	
+	puts("Нажмите любую кнопку...");
 	getchar();
 }
 

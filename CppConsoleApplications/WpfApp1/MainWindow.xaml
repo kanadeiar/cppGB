@@ -5,23 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Пример TPL" Height="200" Width="400">
+        Title="Приложение WPF" Height="200" Width="400">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="Пример приложения"/>
-        <TextBox Grid.Row="1" Grid.Column="0" Margin="5,5,5,5"/>
-        <Grid Grid.Row="2" Grid.Column="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Button Name="cmdCancel" Grid.Row="0" Grid.Column="0" Margin="5,5,5,5" Click="CmdCancel_OnClick" Content="Отмена"/>
-            <Button Name="cmdProcess" Grid.Row="0" Grid.Column="2" Margin="5,5,5,5" Click="CmdProcess_OnClick" Content="Обработка!"></Button>
-        </Grid>
+
+
+
+
     </Grid>
 </Window>
