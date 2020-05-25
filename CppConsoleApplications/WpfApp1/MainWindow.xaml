@@ -7,7 +7,14 @@
         mc:Ignorable="d"
         Title="Приложение WPF" Height="200" Width="400">
     <Grid>
-
+        <Button Height="40" Width="80">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Fill="GreenYellow" Height="20" Width="20"></Ellipse>
+                    <Label Content="OK"></Label>
+                </StackPanel>
+            </Button.Content>
+        </Button>
 
 
 
